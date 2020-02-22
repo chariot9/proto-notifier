@@ -1,6 +1,9 @@
 syntax = "proto3";
 
-package protonotifier.src.twitter;
+package twitter;
+
+option java_package = "src.main.proto.twitter";
+option go_package = "grpc/notifier/twitter";
 
 message User {
     int64 id = 1;
