@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package protonotifier.src.twitter;
+
 import "user.proto";
 
 message Tweet {
