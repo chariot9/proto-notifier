@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package twitter;
+package notifier.src.twitter;
 
 option java_package = "src.main.proto.twitter";
 option go_package = "grpc/notifier/twitter";

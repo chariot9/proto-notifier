@@ -1,16 +1,18 @@
 syntax = "proto3";
 
-package twitter;
+package notifier.src.twitter;
 
 option java_package = "src.main.proto.twitter";
 option go_package = "grpc/notifier/twitter";
 
-import "twitter/user.proto";
+import "notifier/src/twitter/user.proto";
 import "google/protobuf/empty.proto";
 
 service TweetService {
-    rpc Stream (stream google.protobuf.Empty) returns (stream Tweet) {}
-    rpc Receive (stream Tweet) returns (TweetResponse) {}
+    rpc Stream (stream google.protobuf.Empty) returns (stream Tweet) {
+    }
+    rpc Receive (stream Tweet) returns (TweetResponse) {
+    }
 }
 
 message TweetRequest {
