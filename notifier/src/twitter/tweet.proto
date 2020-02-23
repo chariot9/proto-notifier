@@ -7,34 +7,39 @@ option go_package = "grpc/notifier/twitter";
 
 import "notifier/src/twitter/user.proto";
 import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
 
 service TweetService {
-    rpc Stream (stream google.protobuf.Empty) returns (stream Tweet) {
-    }
-    rpc Receive (stream Tweet) returns (TweetResponse) {
-    }
+  rpc Stream (stream google.protobuf.Empty) returns (stream Tweet) {
+    option (google.api.http) = {
+      get: "/v1/stream/twitter"
+    };
+  }
+
+  rpc Receive (stream Tweet) returns (TweetResponse) {
+  }
 }
 
 message TweetRequest {
 }
 
 message TweetResponse {
-    string code = 1;
-    string message = 2;
+  string code = 1;
+  string message = 2;
 }
 
 message Tweet {
-    string created_at = 1;
-    int64 id = 2;
-    string id_str = 3;
-    string text = 4;
-    string source = 5;
-    bool truncated = 6;
-    string in_reply_to_status_id = 7;
-    string in_reply_to_status_id_str = 8;
-    string in_reply_to_user_id = 9;
-    string in_reply_to_user_id_str = 10;
-    string in_reply_to_screen_name = 11;
+  string created_at = 1;
+  int64 id = 2;
+  string id_str = 3;
+  string text = 4;
+  string source = 5;
+  bool truncated = 6;
+  string in_reply_to_status_id = 7;
+  string in_reply_to_status_id_str = 8;
+  string in_reply_to_user_id = 9;
+  string in_reply_to_user_id_str = 10;
+  string in_reply_to_screen_name = 11;
 
-    User user = 12;
+  User user = 12;
 }
